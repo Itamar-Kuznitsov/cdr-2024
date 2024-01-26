@@ -1,0 +1,4 @@
+#remove recursive role
+removes the detected object and removes the calls to this object
+#/acroform /js /javascript /aa /openaction
+#add clean for unused things - no callers 

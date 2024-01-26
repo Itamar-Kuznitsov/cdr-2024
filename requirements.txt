@@ -1,0 +1,10 @@
+ConfigParser
+matplotlib
+numpy
+Pillow
+PyPDF2==2.12.1
+scikit_learn
+torch
+torchvision
+yara_python==4.2.3
+pyhwp==0.1b15

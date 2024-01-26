@@ -1,0 +1,78 @@
+@startuml
+!pragma layout smetana
+skinparam backgroundColor transparent
+
+class Obj {
+   +raw_data
+   +__init__(data)
+   +get_parents()
+   +__repr__()
+}
+Body --* Obj
+class Body {
+   +file_name
+   +xref_dict
+   +start_xref
+   +obj_dict
+   +__init__(xref_dict, start_xref, file_name)
+   +create_obj()
+   +remove_by_id(id)
+   +remove_opt_from_id(id, opt)
+   +get_type(id)
+   +replace_content(id, new_content)
+   +data_bin()
+}
+
+class Xref {
+  +plain_obj_ref_arr
+  +obj_dict_ref
+  +obj_list_ref
+  +start_xref
+  +__init__(obj_ref, start_xref)
+  +create_xref_dict()
+  +object_by_offset(offset)
+  +__repr__()
+}
+
+class Trailer {
+  +plain_data
+  +size
+  +root
+  +info
+  +__init__(trailer_data)
+  +get_info()
+  +get_root()
+  +get_size()
+  +set_info(id)
+  +set_root(id)
+  +set_size(id)
+  +get_trailer_b()
+  +__repr__()
+}
+
+
+PdfFile --* Body
+PdfFile --* Xref
+PdfFile --* Trailer
+class PdfFile {
+  +file_name
+  +trailer_str
+  +xref_str
+  +trailer_obj
+  +xref_obj
+  +body_obj
+  +start_xref
+  +start_trailer
+  +__init__(name)
+  +start_xref()
+  +create_trailer()
+  +find_trailer()
+  +find_startxref()
+  +find_key_word(buff_size, b_string_to_find)
+  +get_id_by_offset(offset)
+  +remove_obj_by_id(id, cdr_rule_dict)
+  +refrash_file()
+  +dump_file(path, new_name)
+}
+
+@enduml
